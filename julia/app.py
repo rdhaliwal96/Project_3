@@ -1,10 +1,7 @@
-# import Flask
-import numpy as np
-
 # import pandas
 import pandas as pd
 
-#import flask
+# import flask
 from flask import Flask, jsonify
 
 # import SQLAlchemy
@@ -13,7 +10,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
-
+# import PyMySQL
 import pymysql
 pymysql.install_as_MySQLdb()
 
