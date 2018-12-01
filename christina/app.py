@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 #import flask
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, request
 
 # import SQLAlchemy
 import sqlalchemy
@@ -26,7 +26,8 @@ conn = engine.connect()
 # Query All Records in the the Database
 data = pd.read_sql("SELECT * FROM listings_detail", conn)
 # save dataframe as a list of dictionaries for easy translation to JSON
-list = data.T.to_dict()
+dictionary = data.T.to_dict()
+list=list(dictionary.values())
 
 
 #################################################
@@ -46,6 +47,12 @@ def welcome():
         f"/api/v1.0/current-listings<br/>"
         f"/api/v1.0/neighborhood-data"
     )
+
+@app.route("/index")
+def index():
+    """List all available api routes."""
+    return render_template("index.html")
+
 
 
 @app.route("/api/v1.0/current-listings")
