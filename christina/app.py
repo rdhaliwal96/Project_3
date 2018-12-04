@@ -30,6 +30,7 @@ dictionary = data.T.to_dict()
 list=list(dictionary.values())
 
 
+
 #################################################
 # Flask Setup
 #################################################
@@ -76,6 +77,7 @@ def neighborhood():
     for item in list:
         neighborhoods.append(item)
     return jsonify(neighborhoods)
+
 
 
 if __name__ == '__main__':
