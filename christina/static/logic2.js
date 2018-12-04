@@ -15,6 +15,7 @@ d3.json("/api/v1.0/current-listings", function(data){
   for (var i = 0; i < data.length; i++) {
     var listing = data[i];
 
+  
 //     var floatedValue = parseFloat((listing.price).replace(/[^\d\.]/, ''));
 // console.log(floatedValue);
     // console.log(listing.latitude)
@@ -40,6 +41,7 @@ d3.json("/api/v1.0/current-listings", function(data){
 
     // Add the marker to the bikeMarkers array
     // roomMarkers.push(roomMarker);
+
     if (listing.price>=300){
       first.push(circleMarker)
     } else if (listing.price>=200){
@@ -67,9 +69,17 @@ var fourthlayer=L.layerGroup(fourth);
     accessToken: API_KEY
   });
 
+  var streetMap=L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.streets",
+  accessToken: API_KEY
+});
+
   // Create a baseMaps object to hold the lightmap layer
   var baseMaps = {
-    "Light Map": lightmap
+    "Light Map": lightmap,
+    "Street Map": streetMap
   };
 
   // Create an overlayMaps object to hold the bikeStations layer
@@ -82,17 +92,30 @@ var fourthlayer=L.layerGroup(fourth);
   };
 
 
+
   // Create the map object with options
 var map=L.map("map", {
     center: [37.77, -122.41],
     zoom: 12,
-    layers: [lightmap, firstlayer]
+    layers: [streetMap, thirdlayer]
   });
 
  
   // Create a layer control, pass in the baseMaps and overlayMaps. Add the layer control to the map
-  L.control.layers(baseMaps, overlayMaps,{
+L.control.layers(baseMaps, overlayMaps,{
     collapsed: false
   }).addTo(map);
 
+
+var legend = L.control({position: 'topright'});
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML = '<select><option>1 Bedroom</option><option>Entire Home</option></select>';
+    div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+    return div;
+};
+legend.addTo(map);
+
+
 });
+
