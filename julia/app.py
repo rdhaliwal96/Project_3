@@ -45,7 +45,8 @@ def welcome():
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/current-listings<br/>"
-        f"/api/v1.0/neighborhood-data"
+        f"/api/v1.0/neighborhood-data<br/>"
+        f"/index"
     )
 
 @app.route("/index")
