@@ -1,8 +1,11 @@
+# import Flask
+import numpy as np
+
 # import pandas
 import pandas as pd
 
-# import flask
-from flask import Flask, jsonify
+#import flask
+from flask import Flask, jsonify, render_template, request
 
 # import SQLAlchemy
 import sqlalchemy
@@ -10,7 +13,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 
-# import PyMySQL
+
 import pymysql
 pymysql.install_as_MySQLdb()
 
@@ -23,7 +26,8 @@ conn = engine.connect()
 # Query All Records in the the Database
 data = pd.read_sql("SELECT * FROM listings_data", conn)
 # save dataframe as a list of dictionaries for easy translation to JSON
-list = data.T.to_dict()
+dictionary = data.T.to_dict()
+list=list(dictionary.values())
 
 
 #################################################
@@ -41,8 +45,15 @@ def welcome():
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/current-listings<br/>"
-        f"/api/v1.0/neighborhood-data"
+        f"/api/v1.0/neighborhood-data<br/>"
+        f"/index"
     )
+
+@app.route("/index")
+def index():
+    """List all available api routes."""
+    return render_template("index.html")
+
 
 
 @app.route("/api/v1.0/current-listings")
