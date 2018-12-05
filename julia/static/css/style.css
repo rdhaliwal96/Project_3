@@ -3,7 +3,15 @@ body,
 #map {
   height: 90%;
   padding: 100;
-  margin: 800;
+  margin-left: 800;
+  margin-right: 800;
+}
+
+#plot {
+  height: 90%;
+  padding: 100;
+  margin-left: 800;
+  margin-right: 800;
 }
 
 h1{
