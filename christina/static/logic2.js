@@ -37,7 +37,7 @@ d3.json("/api/v1.0/current-listings", function(data){
         fillColor: getColor(listing.price),
         fillOpacity: 0.75,
         radius: 10
-      }).bindPopup("<h5>"+listing.name+ "</br>"+"Price Per Night: $"+listing.price+"</h5>"+"</br>"+"Lisiting Link: "+listing.listing_url);
+      }).bindPopup("<h5>"+listing.name+ "</br>"+"Price Per Night: $"+listing.price+"</h5>"+"<img src=" +listing.picture_url+ " alt='Italian Trulli' style='width:125px;height:100px;'>" + "</br>" + "Check Availability: <a href=" +listing.listing_url + ">here</a>");
 
     // Add the marker to the bikeMarkers array
     // roomMarkers.push(roomMarker);
