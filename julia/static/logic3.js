@@ -50,7 +50,62 @@ d3.json("/api/v1.0/current-listings", function(data){
       fourth.push(circleMarker)
     }
 
+    function neighborhoodcount(listing) {
+      // Convert string to an array of words
+    
+      // An object to hold neighborhood data
+      var hoods = {};
+    
+      // Iterate through the array
+      for (var i = 0; i < data.length; i++) {
+        var listing = data[i].neighbourhood_cleansed;
+        var price = data[i].price;
+    
+        // If the neighborhood has been seen before...
+        // if (currenthood in hoods) {
+        if (hoods[listing]) {
+          // Add one to the counter
+          hoods[listing] += 1;
+        }
+        else {
+          // Set the counter at 1
+          hoods[listing] = 1;
+        }
+      }
+      // console.log(wordFrequency);
+      return hoods;
+    }
+    
+  //  console.log(neighborhoodcount(data));
+
   }
+
+ // console.log(neighborhoodcount(data));
+
+ new_object = neighborhoodcount(data);
+
+ console.log(Object.keys(new_object));
+  x_axis = Object.keys(new_object)
+  y_axis = Object.values(new_object)
+
+  var trace1 = {
+    x: x_axis,
+    y: y_axis,
+    type: "bar"
+  };
+  
+  var data = [trace1];
+  
+  var layout = {
+    title: "Listings by neighborhood",
+    xaxis: { title: "Neighborhood"},
+    yaxis: { title: "# of listings"}
+  };
+  
+  Plotly.newPlot("plot", data, layout);
+  
+
+
 // var layers=L.layerGroup(roomMarkers)
 var firstlayer=L.layerGroup(first);
 var secondlayer=L.layerGroup(second);
@@ -171,12 +226,12 @@ L.geoJSON(neighborhoods, {
         });
       },
       // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
-    //   click: function(event) {
-    //     map.fitBounds(event.target.getBounds());
-    //   }
+      click: function(event) {
+        map.fitBounds(event.target.getBounds());
+      }
        });
   //  Giving each feature a pop-up with information pertinent to it
-    // layer.bindPopup("<h2>" + feature.properties.neighbourhood + "</h2>");
+    // layer.bindPopup("<h2>" + feature.properties.neighbourhood + "</h2><h3>" + feature.properties. );
 
     }
 }).addTo(map);
