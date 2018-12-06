@@ -21,14 +21,13 @@ pymysql.install_as_MySQLdb()
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("mysql://root:@localhost:3306/airbnb_db")
+engine = create_engine("mysql://root:@localhost:3306/airbnb_data")
 conn = engine.connect()
 # Query All Records in the the Database
 data = pd.read_sql("SELECT * FROM listings_detail", conn)
 # save dataframe as a list of dictionaries for easy translation to JSON
 dictionary = data.T.to_dict()
 list=list(dictionary.values())
-
 
 
 #################################################
@@ -46,7 +45,8 @@ def welcome():
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/current-listings<br/>"
-        f"/api/v1.0/neighborhood-data"
+        f"/api/v1.0/neighborhood-data<br/>"
+        f"/index"
     )
 
 @app.route("/index")
@@ -77,7 +77,6 @@ def neighborhood():
     for item in list:
         neighborhoods.append(item)
     return jsonify(neighborhoods)
-
 
 
 if __name__ == '__main__':
