@@ -30,6 +30,8 @@ dictionary = data.T.to_dict()
 list=list(dictionary.values())
 
 
+
+
 #################################################
 # Flask Setup
 #################################################
