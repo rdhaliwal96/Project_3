@@ -1,15 +1,15 @@
 body{
   background-color: wheat
-}
-
-/* .svg-container{
+ }
+ 
+ /* .svg-container{
   padding:100;
   margin-top: 100
-} */
-
-html,
-body,
-#map {
+ } */
+ 
+ html,
+ body,
+ #map {
   height: 90%;
   padding: 100;
   margin-left: 800;
@@ -17,11 +17,11 @@ body,
   margin-bottom: 800;
   margin-top: 800;
   width: 90%;
-  margin-left:auto; 
+  margin-left:auto;
   margin-right:auto;
-}
-
-#plot {
+ }
+ 
+ #plot {
   height: 90%;
   padding: 100;
   margin-left: 800;
@@ -29,25 +29,145 @@ body,
   margin-bottom: 800;
   margin-top: 800;
   width: 90%;
-  margin-left:auto; 
+  margin-left:auto;
   margin-right:auto;
-}
-h1{
-text-align: center;
-font-family: Roboto, "Helvetica Neue", sans-serif;
-color: black;
-font-size: 50px;
-padding:15px;
-/* margin-right: 130px; */
-}
+ }
+ #plot2 {
+  height: 90%;
+  padding: 100;
+  margin-left: 800;
+  margin-right: 800;
+  margin-bottom: 800;
+  margin-top: 800;
+  width: 90%;
+  margin-left:auto;
+  margin-right:auto;
+ }
+ #plot3 {
+  height: 90%;
+  padding: 100;
+  margin-left: 800;
+  margin-right: 800;
+  margin-bottom: 800;
+  margin-top: 800;
+  width: 90%;
+  margin-left:auto;
+  margin-right:auto;
+ }
 
-p{
+ h1{
+ text-align: right;
+ font-family: Roboto, "Helvetica Neue", sans-serif;
+ color: black;
+ font-size: 50px;
+ padding:70px;
+ margin-right: 130px;
+ }
+ 
+ p{
   text-align: center;
   font-size: 20px;
   color: black
   }
-
-.jumbotron{
+ 
+ .jumbotron{
+  background-color:white;
+  background-image: url(sfbridge2.jpg);
+  background-position: 30% 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  position: relative;
+  height: 50%;
+  padding: 100;
+  margin-left: 800;
+  margin-right: 800;
+  margin-bottom: 800;
+  margin-top: 800;
+  width: 90%;
+  margin-left:auto;
+  margin-right:auto;
+ 
+ }
+ 
+ #particle {
+  background-color:rgb(17, 0, 94);
+  position: fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:0;
+ }
+ var options = {"particles":{"number":{"value":99,"density":{"enable":true,"value_area":552.4033491425909}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":3},"image":{"src":"img/github.svg","width":70,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":2,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1.5782952832645452,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":false};
+ particlesJS("particle", options);
+ 
+ });
+ <div id="particle"></div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+ 
+ Raman Dhaliwal [7:53 PM]
+ Our group was interested in creating an interactive map which hosts recent Airbnb data. We used SQL, SQL Alchemy, Javascript, Python, Mutli - Geoson data , Javascript and Particles.
+ 
+ Our dashboard includes 4 interactive user features. The first feature shows a map of San Francisco and all of the available homes in san francisco. The different color markers pin point the pricing. Green is for homes less than $100 a night, Blue is $100-$200, yellow is $200-$300 and red $300 + a night.
+ 
+ Our dashboard also holds 2 veritcal bar charts. One of the bar charts includes the amount of homes avaiable in each neighborhood and the average price per home in each neighborhood.
+ 
+ Lastly, our particles background moves with the cursor.
+ 
+ We did run into various difficulities, however it was nothing asking for help and google could not solve.
+ 
+ Christina Vavoulis [8:26 PM]
+ body{
+  background-color: wheat
+ }
+ 
+ /* .svg-container{
+  padding:100;
+  margin-top: 100
+ } */
+ 
+ html,
+ body,
+ #map {
+  height: 90%;
+  padding: 100;
+  margin-left: 800;
+  margin-right: 800;
+  margin-bottom: 800;
+  margin-top: 800;
+  width: 90%;
+  margin-left:auto;
+  margin-right:auto;
+ }
+ 
+ #plot {
+  height: 90%;
+  padding: 100;
+  margin-left: 800;
+  margin-right: 800;
+  margin-bottom: 800;
+  margin-top: 800;
+  width: 90%;
+  margin-left:auto;
+  margin-right:auto;
+ }
+ h1{
+ text-align: center;
+ font-family: Roboto, "Helvetica Neue", sans-serif;
+ color: black;
+ font-size: 50px;
+ padding:15px;
+ /* margin-right: 130px; */
+ }
+ 
+ p{
+  text-align: center;
+  font-size: 20px;
+  color: black
+  }
+ 
+ .jumbotron{
   background-color:white;
   background-image: url(skyline.jpg);
   background-position: 30% 30%;
@@ -62,28 +182,17 @@ p{
   margin-bottom: 800;
   margin-top: 800;
   width: 90%;
-  margin-left:auto; 
-  margin-right:auto; 
-
-}
-
-#particle {
+  margin-left:auto;
+  margin-right:auto;
+ 
+ }
+ 
+ #particle {
   background-color:rgb(17, 0, 94);
   position: fixed;
   top:0;
   right:0;
   bottom:0;
   left:0;
-  z-index:0; 
-}
-
-/* #particle {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-} */
-
-/* #overlay {
-  position: absolute;
-} */
+  z-index:0;
+ }
